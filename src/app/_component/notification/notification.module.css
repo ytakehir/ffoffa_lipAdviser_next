@@ -1,0 +1,21 @@
+.content {
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.animation {
+  animation: slideDownUp 5s ease-in-out;
+}
+
+@keyframes slideDownUp {
+  0% {
+    transform: translateY(-100%);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

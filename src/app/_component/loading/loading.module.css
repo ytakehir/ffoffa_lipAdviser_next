@@ -1,0 +1,30 @@
+.loadingPage {
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  width: 50%;
+  height: 90%;
+  padding: 0 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #555;
+}
+
+.progressLine {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress p {
+  margin-top: 10px;
+}

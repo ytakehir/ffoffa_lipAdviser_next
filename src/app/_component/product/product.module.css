@@ -1,0 +1,21 @@
+.content {
+  width: 100%;
+  margin: 0;
+  color: #555;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* 最大幅を設定 */
+  margin: auto; /* 中央寄せ */
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2%;
+  padding-left: 1%;
+  width: fit-content;
+}

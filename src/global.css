@@ -1,0 +1,39 @@
+* {
+  font-family: 'M PLUS 1p', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  user-select: none;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+body {
+  width: 100%;
+  min-height: 90vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+footer {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+
+.footer {
+  width: 100%;
+}
