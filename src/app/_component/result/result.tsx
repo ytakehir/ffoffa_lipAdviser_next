@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './Result.module.css'
+import styles from './result.module.css'
 import '../../../global.css'
 import React from 'react'
 import { ProductProps } from '@ytakehir/ffoffa_components/dist/types/productTypes'
