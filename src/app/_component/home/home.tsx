@@ -9,7 +9,7 @@ import imageX from '/public/img/logo-black.png'
 import { useHome } from './hooks'
 import { steps } from './config'
 import { SearchArea, Text, Step, Image, LinkLabel, ScrollView, MiniProduct, Falling } from '@ytakehir/ffoffa_components'
-import { AutumnLeaf } from '../seasons/AutumnLeaf'
+import AcUnitIcon from '@mui/icons-material/AcUnit'
 
 export const Home = React.memo(() => {
   const {
@@ -29,7 +29,7 @@ export const Home = React.memo(() => {
 
   return (
     <div className={styles.content}>
-      <Falling icon={<AutumnLeaf />} color={'#d6ebff'} opacity={0.5} />
+      <Falling icon={<AcUnitIcon />} color={'#cbe6ff'} opacity={0.8} />
       <div className={styles.main}>
         {/* <div
           className={styles.image}
