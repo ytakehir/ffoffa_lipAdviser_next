@@ -20,7 +20,7 @@ export const useHome = () => {
   const router = useRouter()
   const { brandNameList, setBrandNameList } = useBrand()
   const [isMobile, setIsMobile] = useState<boolean>(false)
-  const [colorCode, setColorCode] = useState<string>('')
+  const [colorCode, setColorCode] = useState<string>('#ffffff')
   const [ranking, setRanking] = useState<(ProductProps & { count: number; buttonClick: () => void })[] | null>(null)
   const [lipId, setLipId] = useState<number | null>(null)
   const [selectOptions, setSelectOptions] = useState<string>()
@@ -94,11 +94,11 @@ export const useHome = () => {
         brandName: product.lip.brandName,
         productName: product.lip.productName,
         productColor: `${product.lip.colorNumber} ${product.lip.colorName}`,
-        productAmount: product.lip.amount ?? '',
+        productAmount: product.lip.amount,
         officialUrl: product.lip.officialURL,
         amazonUrl: product.lip.amazonURL,
         qooTenUrl: product.lip.qooTenURL,
-        similarLevel: product.lip.similarPoint ?? '',
+        similarLevel: product.lip.similarPoint,
         limitedProductFlag: product.lip.limitedProductFlag,
         salesStopFlag: product.lip.salesStopFlag,
         PRFlag: product.lip.prFlag,

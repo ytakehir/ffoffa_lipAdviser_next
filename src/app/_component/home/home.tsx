@@ -27,6 +27,7 @@ export const Home = React.memo(() => {
     brandLogo,
   } = useHome()
 
+  console.log(colorCode)
   return (
     <div className={styles.content}>
       <Falling icon={<AcUnitIcon />} color={'#cbe6ff'} opacity={0.8} />
@@ -49,7 +50,7 @@ export const Home = React.memo(() => {
             text={
               <>
                 似ている
-                <span style={{ color: colorCode, margin: '0.2rem' }}>色</span>
+                <span style={{ color: colorCode === '#ffffff' ? '#555' : colorCode, margin: '0.2rem' }}>色</span>
                 のリップを
                 <br />
                 商品や写真から検索できるサイト

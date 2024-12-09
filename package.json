@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "set NODE_OPTIONS=--no-inspect && next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "export": "next export",
@@ -20,7 +20,7 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@mui/joy": "^5.0.0-beta.36",
-    "@ytakehir/ffoffa_components": "^0.9.6",
+    "@ytakehir/ffoffa_components": "^0.9.7",
     "create-vite": "^5.2.3",
     "cross-spawn": "^7.0.6",
     "next": "^15.0.3",
@@ -42,7 +42,8 @@
     "@storybook/react": "^8.0.9",
     "@storybook/react-vite": "^8.0.9",
     "@storybook/test": "^8.0.9",
-    "@types/react": "^18.2.66",
+    "@types/node": "22.10.1",
+    "@types/react": "18.3.14",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
@@ -61,7 +62,7 @@
     "prettier": "^3.2.5",
     "storybook": "^8.0.9",
     "style-loader": "^4.0.0",
-    "typescript": "^5.2.2",
+    "typescript": "5.7.2",
     "typescript-eslint": "^7.7.1",
     "vite": "^5.2.0"
   }

@@ -19,7 +19,7 @@ type ProductViewProps = {
   similarLipList: ProductList
 }
 
-export const ProductView = React.memo(async (props: ProductViewProps) => {
+export const ProductView = React.memo((props: ProductViewProps) => {
   const {
     setSelected,
     setProductId,

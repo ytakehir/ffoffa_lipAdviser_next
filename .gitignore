@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .next
+.env
+
 next-env.d.ts
 
 # Editor directories and files
