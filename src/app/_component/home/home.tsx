@@ -27,7 +27,6 @@ export const Home = React.memo(() => {
     brandLogo,
   } = useHome()
 
-  console.log(colorCode)
   return (
     <div className={styles.content}>
       <Falling icon={<AcUnitIcon />} color={'#cbe6ff'} opacity={0.8} />

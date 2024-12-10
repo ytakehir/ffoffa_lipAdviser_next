@@ -195,7 +195,12 @@ export const useResult = () => {
   }
 
   const handleDeleteButtonClick = (productToDelete: ProductProps) => {
-    setComparisonList((prevList) => prevList.filter((check) => check.product.lipId !== productToDelete.product.lipId))
+    const prevList = comparisonList.filter((check) => check.product.lipId !== productToDelete.product.lipId)
+    setComparisonList(prevList)
+    if (prevList.length === 0) {
+      console.log('a')
+      setModalIsOpen(false)
+    }
   }
 
   const handleChange = (_event: Event, newValue: number | number[], activeThumb: number) => {
