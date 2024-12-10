@@ -198,7 +198,6 @@ export const useResult = () => {
     const prevList = comparisonList.filter((check) => check.product.lipId !== productToDelete.product.lipId)
     setComparisonList(prevList)
     if (prevList.length === 0) {
-      console.log('a')
       setModalIsOpen(false)
     }
   }

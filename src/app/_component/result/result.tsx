@@ -44,6 +44,20 @@ export const Result = React.memo(() => {
   if (searchResult && tags) {
     return (
       <div className={styles.content}>
+        <div className={styles.comparisonArea}>
+          <Modal
+            isOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+            modalWidth={'100%'}
+            modal={
+              <ComparisonModal
+                setModalIsOpen={setModalIsOpen}
+                product={comparisonList}
+                deleteButtonClick={handleDeleteButtonClick}
+              />
+            }
+          />
+        </div>
         <div className={styles.resultBar}>
           <ResultBar
             color={`#${colorCode}`}
@@ -98,24 +112,12 @@ export const Result = React.memo(() => {
               })}
             </div>
             {comparisonList.length > 0 && !filterIsOpen && (
-              <div className={styles.comparisonArea}>
+              <div className={styles.comparisonButtonArea}>
                 <div className={styles.comparisonButton}>
                   <Button buttonType={'noneIcon'} visual={'secondary'} onClick={() => setModalIsOpen(true)}>
                     {comparisonList.length}件のリップを詳しく比較する
                   </Button>
                 </div>
-                <Modal
-                  isOpen={modalIsOpen}
-                  setModalIsOpen={setModalIsOpen}
-                  modalWidth={'100%'}
-                  modal={
-                    <ComparisonModal
-                      setModalIsOpen={setModalIsOpen}
-                      product={comparisonList}
-                      deleteButtonClick={handleDeleteButtonClick}
-                    />
-                  }
-                />
               </div>
             )}
             <div className={styles.share}>
