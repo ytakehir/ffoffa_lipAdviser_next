@@ -20,7 +20,7 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@mui/joy": "^5.0.0-beta.36",
-    "@ytakehir/ffoffa_components": "^0.9.8",
+    "@ytakehir/ffoffa_components": "^0.9.9",
     "create-vite": "^5.2.3",
     "cross-spawn": "^7.0.6",
     "next": "^15.0.3",
