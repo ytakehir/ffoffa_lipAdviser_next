@@ -5,6 +5,7 @@ export function getBrandName() {
       accessId: process.env.NEXT_PUBLIC_API_ACCESS_ID ?? '',
       accessKey: process.env.NEXT_PUBLIC_API_ACCESS_KEY ?? '',
     },
+    method: 'GET',
     mode: 'cors',
     credentials: 'include',
   })

@@ -13,7 +13,7 @@ dist-ssr
 *.local
 .next
 .env
-
+package-lock.json
 next-env.d.ts
 
 # Editor directories and files

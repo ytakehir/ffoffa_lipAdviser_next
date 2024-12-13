@@ -56,12 +56,17 @@ export const useHome = () => {
     const canvas = canvasRef.current
     if (!canvas) return
 
+    const rect = canvas.getBoundingClientRect() // 表示サイズを取得
+    const scaleX = canvas.width / rect.width // X軸のスケール比
+    const scaleY = canvas.height / rect.height // Y軸のスケール比
+
+    // クリック位置をキャンバスのスケールに基づいて補正
+    const x = (e.clientX - rect.left) * scaleX
+    const y = (e.clientY - rect.top) * scaleY
+
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const rect = canvas.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
     const pixel = ctx.getImageData(x, y, 1, 1).data
 
     const color = rgbToHex(pixel[0], pixel[1], pixel[2])
