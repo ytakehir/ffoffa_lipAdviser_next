@@ -5,7 +5,7 @@ import { ProductView } from 'src/app/_component/product/product'
 import { getProductId } from 'src/api/GetProductId'
 import { getSameLip } from 'src/api/GetSameLip'
 import { getSimilarLip } from 'src/api/GetSimilarLip'
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from 'next'
 import thumbnail from '/public/img/サムネイル.png'
 import { ProductList } from 'src/types'
 

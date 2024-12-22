@@ -1,9 +1,11 @@
+import { getApiBaseUrl } from './getApiBaseUrl'
+
 export function getSimilarLip(colorCode: string) {
   const request = {
     colorCode: colorCode,
   }
 
-  return fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/similarLip`, {
+  return fetch(`${getApiBaseUrl() || ''}/similarLip`, {
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       accessId: process.env.NEXT_PUBLIC_API_ACCESS_ID ?? '',
@@ -12,7 +14,6 @@ export function getSimilarLip(colorCode: string) {
     method: 'POST',
     body: JSON.stringify(request),
     mode: 'cors',
-    credentials: 'include',
   })
     .then((response) => response.json())
     .then((result) => {

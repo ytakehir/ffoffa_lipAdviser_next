@@ -12,7 +12,6 @@ export function postColorCodeHistory(colorCode: string) {
     method: 'POST',
     body: JSON.stringify(request),
     mode: 'cors',
-    credentials: 'include',
   })
     .then((response) => response.json())
     .then((result) => {

@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  height: 60vh;
+  padding: 2%;
+  justify-items: center;
+  align-content: center;
+  color: #555;
+  row-gap: 20px;
+}

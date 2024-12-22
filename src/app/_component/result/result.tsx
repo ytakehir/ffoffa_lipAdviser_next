@@ -20,6 +20,7 @@ import {
 
 export const Result = React.memo(() => {
   const {
+    current,
     page,
     modalIsOpen,
     setModalIsOpen,
@@ -128,7 +129,7 @@ export const Result = React.memo(() => {
               />
             </div>
             <div className={styles.pageJump}>
-              <PageJump pageJump={createPage(searchResult?.productList.length)} />
+              <PageJump current={current} pageJump={createPage(searchResult?.productList.length)} />
             </div>
           </>
         )}

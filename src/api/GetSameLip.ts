@@ -3,7 +3,7 @@ export function getSameLip(productId: string) {
     productId: productId,
   }
 
-  return fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/sameLip`, {
+  return fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || ''}/sameLip`, {
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       accessId: process.env.NEXT_PUBLIC_API_ACCESS_ID ?? '',
@@ -12,7 +12,6 @@ export function getSameLip(productId: string) {
     method: 'POST',
     body: JSON.stringify(request),
     mode: 'cors',
-    credentials: 'include',
   })
     .then((response) => response.json())
     .then((result) => {

@@ -7,8 +7,8 @@
 .main {
   position: relative;
   width: 100%;
-  max-width: 600px; /* 最大幅を設定 */
-  margin: auto; /* 中央寄せ */
+  max-width: 600px;
+  margin: auto;
 }
 
 .back {

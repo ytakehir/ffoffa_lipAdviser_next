@@ -7,7 +7,6 @@ export function getTags() {
     },
     method: 'GET',
     mode: 'cors',
-    credentials: 'include',
   })
     .then((response) => response.json())
     .then((result) => {

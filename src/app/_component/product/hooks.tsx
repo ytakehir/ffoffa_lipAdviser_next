@@ -70,13 +70,11 @@ export const useProduct = () => {
     return queryString ? `${pathname}?${queryString}` : pathname
   }
 
-  const createColorOptions = (
-    productList: ProductList['productList'],
-  ): { value: string | number; option: string }[] => {
+  const createColorOptions = (productList: ProductList['productList']): { value: string | number; label: string }[] => {
     if (productList) {
       return productList.map((product) => ({
         value: String(product.lip.lipId),
-        option: `#${product.lip.colorCode}`,
+        label: `#${product.lip.colorCode}`,
       }))
     }
 

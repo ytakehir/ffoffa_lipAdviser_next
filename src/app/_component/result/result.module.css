@@ -4,6 +4,7 @@
 }
 
 .pageJump {
+  padding: 50px 0;
   text-align: center;
 }
 
@@ -49,19 +50,14 @@
   padding-right: 2%;
 }
 
-.pageJump {
-  padding: 50px 0;
-}
-
 .resultZero {
-  width: 50%;
-  height: 90%;
-  padding: 0 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
   color: #555;
+  min-height: 90vh;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  row-gap: 30px;
 }
 
 .searchButton {

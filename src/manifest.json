@@ -1,0 +1,13 @@
+{
+  "name": "FFOFFA",
+  "short_name": "FFOFFA",
+  "description": "FFOFFA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "icons": [
+    { "src": "/icon-192x192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512x512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

@@ -34,6 +34,7 @@ export const useResult = () => {
   const [sortState, setSortState] = useState<boolean>(true)
   const [slicedProductList, setSlicedProductList] = useState<ProductProps[][]>([])
   const [comparisonList, setComparisonList] = useState<ProductProps[]>([])
+  const [current, setCurrent] = useState<number>(1)
 
   const redirectToUrl = (productId: string, lipId: string) => {
     const query = new URLSearchParams({ lipId: lipId }).toString()
@@ -52,7 +53,10 @@ export const useResult = () => {
     return [...Array(createPageIndex(length))].map((_, i) => {
       const link: { index: number; jump: () => void } = {
         index: i + 1,
-        jump: () => setPage(i + 1),
+        jump: () => {
+          setPage(i + 1)
+          setCurrent(current)
+        },
       }
       return link
     })
@@ -227,21 +231,21 @@ export const useResult = () => {
   }
 
   const sortOptions = selectTag.options.map((option, index) => {
-    return { id: String(index), value: option.value, option: option.label }
+    return { id: option.label, value: option.value, label: option.label }
   })
 
   const similarOptions = [
-    { id: '1', value: 0, option: '全て' },
-    { id: '2', value: 6, option: '6以上' },
-    { id: '3', value: 7, option: '7以上' },
-    { id: '4', value: 8, option: '8以上' },
-    { id: '5', value: 9, option: '9以上' },
+    { id: '1', value: 0, label: '全て' },
+    { id: '2', value: 6, label: '6以上' },
+    { id: '3', value: 7, label: '7以上' },
+    { id: '4', value: 8, label: '8以上' },
+    { id: '5', value: 9, label: '9以上' },
   ]
 
   const modalOptions: SortFilterModalProps = {
     brandCheckList: brandNameList.map((brand, index) => {
       return {
-        id: String(index),
+        id: brand.value,
         name: 'brand',
         onChange: brandHandleChange,
         checked: brandChecked.includes(brand.value),
@@ -253,7 +257,7 @@ export const useResult = () => {
       tags && tags.tagList && tags.tagList.length > 0
         ? tags.tagList.map((tag, index) => {
             return {
-              id: String(index),
+              id: tag.tagName,
               name: 'tag',
               onChange: tagHandleChange,
               checked: tagChecked.includes(tag.tagName),
@@ -318,6 +322,7 @@ export const useResult = () => {
   })
 
   return {
+    current,
     page,
     modalIsOpen,
     setModalIsOpen,

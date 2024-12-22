@@ -1,6 +1,11 @@
 import '../global.css'
+import ViewLayout from './(pages)/layout'
 import { NotFoundView } from './_component/notFound/notFound'
 
 export default function Page() {
-  return <NotFoundView />
+  return (
+    <ViewLayout>
+      <NotFoundView />
+    </ViewLayout>
+  )
 }
