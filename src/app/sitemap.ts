@@ -9,29 +9,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     {
       url: baseURL,
-      lastModified,
     },
     {
       url: `${baseURL}/result`,
-      lastModified,
     },
     {
       url: `${baseURL}/rules`,
-      lastModified,
     },
     {
       url: `${baseURL}/privacyPolicy`,
-      lastModified,
     },
     {
       url: `${baseURL}/contactForm`,
-      lastModified,
     },
   ]
 
   const dynamicPaths = productIds.productIdList.map((productId: { productId: string }) => {
     return {
-      url: `${baseURL}/articles/${productId.productId}`,
+      url: `${baseURL}/product/${productId.productId}`,
       lastModified,
     }
   })

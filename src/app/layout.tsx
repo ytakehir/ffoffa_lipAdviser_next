@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import thumbnail from '/public/img/サムネイル.png'
 import { BrandProvider } from 'src/context/brandContext'
 import { NotificationProvider } from 'src/context/NotificationContext'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: 'FFOFFA LIPADVISER',
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
     description: 'FFOFFA LIPADVISERは、商品や写真・画像などから似ている色味を持つ別のリップを検索することができます。',
     images: [thumbnail.src],
   },
+  verification: { google: 'e3HOSFraI3e9cITJ8WzHlaAEjZbLwHKclnevciynb38' },
 }
 
 export const viewport: Viewport = {
@@ -36,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <body>
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? ''} />
         <NotificationProvider>
           <BrandProvider>{children}</BrandProvider>
         </NotificationProvider>
