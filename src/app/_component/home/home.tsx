@@ -70,7 +70,7 @@ export const Home = React.memo(() => {
           secondOptionChange={secondOptionChange}
           canvasClick={handleCanvasMouseDown}
           colorChange={handleColorChange}
-          canvasRef={canvasRef}
+          canvasRef={canvasRef as React.RefObject<HTMLCanvasElement>}
         />
       </div>
       <div className={styles.brands}>
