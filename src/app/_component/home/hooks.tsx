@@ -15,6 +15,7 @@ import { Image, ColorPreview } from '@ytakehir/ffoffa_components'
 import { getLipRanking } from 'src/api/GetLipRanking'
 import { getLip } from 'src/api/GetLip'
 import { ProductProps } from '@ytakehir/ffoffa_components/dist/types/productTypes'
+import React from 'react'
 
 export const useHome = () => {
   const router = useRouter()
@@ -31,7 +32,7 @@ export const useHome = () => {
   }>()
   const [lipOptions, setLipOptions] = useState<LipOption[]>([])
   const [logoImageList, setLogoImageList] = useState<ImageType[]>([])
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const canvasRef = React.createRef<HTMLCanvasElement>()
   const rankingInterval = 7 //days
 
   const mediaQuery = () => {
@@ -53,7 +54,7 @@ export const useHome = () => {
   }
 
   const handleCanvasMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!canvasRef.current) return
+    if (!canvasRef || !canvasRef.current) return
     const canvas = canvasRef.current
     if (!canvas) return
 
