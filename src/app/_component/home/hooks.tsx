@@ -31,7 +31,7 @@ export const useHome = () => {
   }>()
   const [lipOptions, setLipOptions] = useState<LipOption[]>([])
   const [logoImageList, setLogoImageList] = useState<ImageType[]>([])
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const rankingInterval = 7 //days
 
   const mediaQuery = () => {
