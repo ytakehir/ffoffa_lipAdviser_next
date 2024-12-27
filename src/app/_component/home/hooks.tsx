@@ -53,6 +53,7 @@ export const useHome = () => {
   }
 
   const handleCanvasMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!canvasRef.current) return
     const canvas = canvasRef.current
     if (!canvas) return
 
