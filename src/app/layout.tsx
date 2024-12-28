@@ -1,6 +1,6 @@
 import type { Viewport } from 'next'
 import type { Metadata } from 'next'
-import thumbnail from '/public/img/サムネイル.png'
+import thumbnail from '/public/img/thumbnail.png'
 import { BrandProvider } from 'src/context/brandContext'
 import { NotificationProvider } from 'src/context/NotificationContext'
 import { GoogleTagManager } from '@next/third-parties/google'
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'FFOFFA LIPADVISER',
   description: 'FFOFFA LIPADVISERは、商品や写真・画像などから似ている色味を持つ別のリップを検索することができます。',
   keywords: 'リップ,コスメ,似てる,色,プチプラ,韓国,類似,デパコス,グロス,ティント,口紅,ルージュ,比較',
-  metadataBase: new URL('https://ffoffa.com'),
+  metadataBase: new URL('https://ffoffa.net'),
   openGraph: {
     title: 'FFOFFA LIPADVISER',
     description: 'FFOFFA LIPADVISERは、商品や写真・画像などから似ている色味を持つ別のリップを検索することができます。',

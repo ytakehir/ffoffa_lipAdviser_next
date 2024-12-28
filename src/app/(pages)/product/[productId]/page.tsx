@@ -6,7 +6,7 @@ import { getProductId } from 'src/api/GetProductId'
 import { getSameLip } from 'src/api/GetSameLip'
 import { getSimilarLip } from 'src/api/GetSimilarLip'
 import type { Metadata } from 'next'
-import thumbnail from '/public/img/サムネイル.png'
+import thumbnail from '/public/img/thumbnail.png'
 import { ProductList } from 'src/types'
 
 type PageProps = {
