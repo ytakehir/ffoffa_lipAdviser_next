@@ -45,20 +45,18 @@ export const Result = React.memo(() => {
   if (searchResult && tags) {
     return (
       <div className={styles.content}>
-        <div className={styles.comparisonArea}>
-          <Modal
-            isOpen={modalIsOpen}
-            setModalIsOpen={setModalIsOpen}
-            modalWidth={'100%'}
-            modal={
-              <ComparisonModal
-                setModalIsOpen={setModalIsOpen}
-                product={comparisonList}
-                deleteButtonClick={handleDeleteButtonClick}
-              />
-            }
-          />
-        </div>
+        <Modal
+          isOpen={modalIsOpen}
+          setModalIsOpen={setModalIsOpen}
+          modalWidth={'100%'}
+          modal={
+            <ComparisonModal
+              setModalIsOpen={setModalIsOpen}
+              product={comparisonList}
+              deleteButtonClick={handleDeleteButtonClick}
+            />
+          }
+        />
         <div className={styles.resultBar}>
           <ResultBar
             color={`#${colorCode}`}

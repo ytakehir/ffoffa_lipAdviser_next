@@ -14,7 +14,7 @@ type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
-export const generateMetadata = async ({ params, searchParams }: PageProps): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   const { productId } = await params
   const product = await getSameLip(productId).then((result: ProductList) => result.productList[0])
 
@@ -29,9 +29,8 @@ export const generateMetadata = async ({ params, searchParams }: PageProps): Pro
       images: product.imageList ? product.imageList[0].path : thumbnail.src,
     },
     twitter: {
-      title: 'FFOFFA LIPADVISER',
-      description:
-        'FFOFFA LIPADVISERは、商品や写真・画像などから似ている色味を持つ別のリップやコスメを検索することができます。',
+      title: `FFOFFA LIPADVISER | ${product.lip.brandName + ' ' + product.lip.productName}`,
+      description: `${product.lip.brandName + ' ' + product.lip.productName}に似ている色味を持つ別のリップの検索結果です。FFOFFA LIPADVISERは、商品や写真・画像などから似ている色味を持つ別のリップやコスメを検索することができます。また、AIを利用し画像から色の取得・検索も可能です。`,
       images: [product.imageList ? product.imageList[0].path : thumbnail.src],
     },
   }

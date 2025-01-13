@@ -69,7 +69,7 @@ export const ProductView = React.memo((props: ProductViewProps) => {
           campaignText={{ official: undefined, amazon: undefined, qooTen: undefined }}
           share={{
             title: `FFOFFA LIPADVISER | ${viewProduct.lip.brandName + ' ' + viewProduct.lip.productName + ' ' + viewProduct.lip.colorName}`,
-            text: `${viewProduct.lip.brandName + ' ' + viewProduct.lip.productName + ' ' + viewProduct.lip.colorName}に色味が似ているリップの検索結果です。`,
+            text: `${viewProduct.lip.brandName + ' ' + viewProduct.lip.productName + ' ' + viewProduct.lip.colorName}に色味が似ているリップの検索結果です。。FFOFFA LIPADVISERは、商品や写真・画像などから似ている色味を持つ別のリップやコスメを検索することができます。また、AIを利用し画像から色の取得・検索も可能です。`,
             url: createFullURL(),
           }}
         />

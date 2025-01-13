@@ -16,6 +16,7 @@ import { getLipRanking } from 'src/api/GetLipRanking'
 import { getLip } from 'src/api/GetLip'
 import { ProductProps } from '@ytakehir/ffoffa_components/dist/types/productTypes'
 import React from 'react'
+import { getColor } from 'src/api/GetColor'
 
 export const useHome = () => {
   const router = useRouter()
@@ -32,6 +33,7 @@ export const useHome = () => {
   }>()
   const [lipOptions, setLipOptions] = useState<LipOption[]>([])
   const [logoImageList, setLogoImageList] = useState<ImageType[]>([])
+  const [base64Code, setBase64Code] = useState<string>('')
   const canvasRef = React.createRef<HTMLCanvasElement>()
   const rankingInterval = 7 //days
 
@@ -146,17 +148,6 @@ export const useHome = () => {
   useMount(async () => {
     mediaQuery()
 
-    const rank = await getLipRanking(rankingInterval).then(
-      (result: { lipRankingList: { lipId: number; count: number }[] }) => result,
-    )
-
-    const pl: (ProductProps & { count: number; buttonClick: () => void })[] = await Promise.all(
-      rank.lipRankingList.map((lipRanking: { lipId: number; count: number }) => {
-        return getLip(lipRanking.lipId).then((lip: Product) => createRanking(lip, lipRanking.count * 90))
-      }),
-    )
-    setRanking(pl)
-
     const bn: { value: string; label: string }[] = []
     getBrandName().then((result) => {
       result.brandNameList.map((brandName: { brandName: string }) => {
@@ -178,6 +169,17 @@ export const useHome = () => {
       })
       setLogoImageList([...new Set(li)])
     })
+
+    const rank = await getLipRanking(rankingInterval).then(
+      (result: { lipRankingList: { lipId: number; count: number }[] }) => result,
+    )
+
+    const pl: (ProductProps & { count: number; buttonClick: () => void })[] = await Promise.all(
+      rank.lipRankingList.map((lipRanking: { lipId: number; count: number }) => {
+        return getLip(lipRanking.lipId).then((lip: Product) => createRanking(lip, lipRanking.count * 90))
+      }),
+    )
+    setRanking(pl)
   })
 
   useEffect(() => {
@@ -216,6 +218,13 @@ export const useHome = () => {
     }
   }, [selectOptions])
 
+  const uploadBase64 = (base64: string) => {
+    getColor(base64).then((result) => {
+      setColorCode(`#${result.colorCode}`)
+      setBase64Code(result.base64)
+    })
+  }
+
   const buttonClick = () => {
     if (colorCode) {
       router.push(`/result/${colorCode.replace('#', '')}`, { scroll: true })
@@ -251,5 +260,7 @@ export const useHome = () => {
     lipOptions,
     buttonClick,
     brandLogo,
+    base64Code,
+    uploadBase64,
   }
 }

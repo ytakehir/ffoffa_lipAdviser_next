@@ -25,21 +25,14 @@ export const Home = React.memo(() => {
     lipOptions,
     buttonClick,
     brandLogo,
+    base64Code,
+    uploadBase64,
   } = useHome()
 
   return (
     <div className={styles.content}>
       <Falling icon={<AcUnitIcon />} color={'#cbe6ff'} opacity={0.8} />
       <div className={styles.main}>
-        {/* <div
-          className={styles.image}
-          style={{
-            backgroundImage: `url(${imageHeader})`,
-            padding: "30%",
-            display: "block",
-            backgroundSize: "cover",
-          }}
-        ></div> */}
         <div className={styles.title}>
           <Text size={'h1'} text={'FFOFFA LIPADVISER'} />
         </div>
@@ -71,6 +64,8 @@ export const Home = React.memo(() => {
           canvasClick={handleCanvasMouseDown}
           colorChange={handleColorChange}
           canvasRef={canvasRef as React.RefObject<HTMLCanvasElement>}
+          base64Code={base64Code}
+          uploadBase64={uploadBase64}
         />
       </div>
       <div className={styles.brands}>
