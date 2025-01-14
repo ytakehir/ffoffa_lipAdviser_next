@@ -6,38 +6,28 @@ import React from 'react'
 import { ProductProps } from '@ytakehir/ffoffa_components/dist/types/productTypes'
 import { useResult } from './hook'
 import { Loading } from '../loading/loading'
-import {
-  ComparisonModal,
-  Modal,
-  Button,
-  Text,
-  ResultBar,
-  Icon,
-  PageJump,
-  Product,
-  Share,
-} from '@ytakehir/ffoffa_components'
+import { Button, Text, ResultBar, Icon, PageJump, Product, Share, Comparison } from '@ytakehir/ffoffa_components'
 
 export const Result = React.memo(() => {
   const {
     current,
     page,
-    modalIsOpen,
-    setModalIsOpen,
+    isComparisonMode,
+    setIsComparisonMode,
     sortState,
     slicedProductList,
     createPage,
     redirectToHome,
     handleComparisonButton,
     handleDeleteButtonClick,
-    modalOptions,
+    drawerOptions,
     searchResult,
     tags,
     colorCode,
     selectTag,
     tagList,
     filterIsOpen,
-    setFilterIsOpen,
+    toggleDrawer,
     createPageIndex,
     comparisonList,
   } = useResult()
@@ -45,32 +35,27 @@ export const Result = React.memo(() => {
   if (searchResult && tags) {
     return (
       <div className={styles.content}>
-        <Modal
-          isOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-          modalWidth={'100%'}
-          modal={
-            <ComparisonModal
-              setModalIsOpen={setModalIsOpen}
-              product={comparisonList}
-              deleteButtonClick={handleDeleteButtonClick}
-            />
-          }
-        />
-        <div className={styles.resultBar}>
-          <ResultBar
-            color={`#${colorCode}`}
-            selectTag={{
-              ...selectTag,
-            }}
-            tagList={tagList}
-            modalOptions={modalOptions}
-            modal={{
-              modalIsOpen: filterIsOpen,
-              setModalIsOpen: setFilterIsOpen,
-            }}
+        {isComparisonMode && (
+          <Comparison
+            product={comparisonList}
+            deleteButtonClick={handleDeleteButtonClick}
+            closeButtonClick={() => setIsComparisonMode(false)}
           />
-        </div>
+        )}
+        {!isComparisonMode && (
+          <div className={styles.resultBar}>
+            <ResultBar
+              color={`#${colorCode}`}
+              selectTag={{
+                ...selectTag,
+              }}
+              tagList={tagList}
+              drawerOptions={drawerOptions}
+              isOpen={filterIsOpen}
+              toggleDrawer={toggleDrawer}
+            />
+          </div>
+        )}
         {(searchResult.productList.length === 0 || !sortState) && (
           <div className={styles.resultZero}>
             <Text size={'h5'} text={'見つかりませんでした…'} />
@@ -87,7 +72,7 @@ export const Result = React.memo(() => {
             </div>
           </div>
         )}
-        {(searchResult.productList.length !== 0 || sortState) && slicedProductList.length > 0 && (
+        {(searchResult.productList.length !== 0 || sortState) && slicedProductList.length > 0 && !isComparisonMode && (
           <>
             <div className={styles.notes}>
               <Text size={'default'} text={`${searchResult?.productList.length}件あります`} />
@@ -113,7 +98,7 @@ export const Result = React.memo(() => {
             {comparisonList.length > 0 && !filterIsOpen && (
               <div className={styles.comparisonButtonArea}>
                 <div className={styles.comparisonButton}>
-                  <Button buttonType={'noneIcon'} visual={'secondary'} onClick={() => setModalIsOpen(true)}>
+                  <Button buttonType={'noneIcon'} visual={'secondary'} onClick={() => setIsComparisonMode(true)}>
                     {comparisonList.length}件のリップを詳しく比較する
                   </Button>
                 </div>

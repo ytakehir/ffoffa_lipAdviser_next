@@ -1,9 +1,10 @@
 {
   "name": "FFOFFA",
   "short_name": "FFOFFA",
-  "description": "FFOFFA",
+  "description": "FFOFFAは、商品や写真・画像などから似ている色味を持つ別のリップを検索することができます。また、AIを利用し画像から色の取得・検索も可能です。",
   "start_url": "/",
   "display": "standalone",
+  "scope": "/",
   "background_color": "#000",
   "theme_color": "#000",
   "icons": [

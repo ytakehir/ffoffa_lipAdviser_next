@@ -1,6 +1,6 @@
 export const steps: { title: string; description: React.ReactNode }[] = [
   {
-    title: 'リップまたは、画像から検索する',
+    title: '商品または、AIや画像から検索する',
     description: '当サイトに登録されているリップまたは、お手持ちの画像内の色から類似色のリップをご検索いただけます。',
   },
   {

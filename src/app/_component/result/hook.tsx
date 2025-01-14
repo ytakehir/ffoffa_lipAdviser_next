@@ -2,13 +2,13 @@
 
 import { getSimilarLip } from 'src/api/GetSimilarLip'
 import { getTags } from 'src/api/GetTag'
-import { SortFilterModalProps } from 'node_modules/@ytakehir/ffoffa_components/dist/components/Modal/types'
 import { useState, useCallback, useEffect } from 'react'
 import { ProductProps } from '@ytakehir/ffoffa_components/dist/types/productTypes'
 import { ProductList, TagList } from 'src/types'
 import { useMount } from 'react-use'
 import { useBrand } from 'src/context/brandContext'
-import { useRouter, useParams, usePathname } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
+import { SortFilterProps } from '@ytakehir/ffoffa_components/dist/components/Drawer/types'
 
 export const useResult = () => {
   const min = 500
@@ -27,7 +27,7 @@ export const useResult = () => {
   const [page, setPage] = useState<number>(1)
   const [brandChecked, setBrandChecked] = useState<string[]>([])
   const [tagChecked, setTagChecked] = useState<string[]>([])
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [isComparisonMode, setIsComparisonMode] = useState(false)
   const [filterIsOpen, setFilterIsOpen] = useState(false)
   const [similarSelected, setSimilarSelected] = useState<number>(0)
   const [rangeValue, setRangeValue] = useState<number[]>([min, max])
@@ -63,12 +63,12 @@ export const useResult = () => {
   }
 
   useEffect(() => {
-    if (modalIsOpen || filterIsOpen) {
+    if (filterIsOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'auto'
     }
-  }, [modalIsOpen, filterIsOpen])
+  }, [filterIsOpen])
 
   const sliceList = (arr: ProductProps[], size: number) =>
     arr.flatMap((_, i, a) => (i % size ? [] : [a.slice(i, i + size)]))
@@ -166,10 +166,6 @@ export const useResult = () => {
     }
   }
 
-  const closeModal = () => {
-    setFilterIsOpen(false)
-  }
-
   const handleClearButton = () => {
     setSortType('類似度が高い順')
     setSimilarSelected(0)
@@ -184,6 +180,10 @@ export const useResult = () => {
 
   const changeSimilarSelected = (select: React.ChangeEvent<HTMLInputElement>) => {
     setSimilarSelected(Number(select.target.value))
+  }
+
+  const toggleDrawer = () => {
+    setFilterIsOpen(!filterIsOpen)
   }
 
   const handleComparisonButton = (product: ProductProps) => {
@@ -202,7 +202,7 @@ export const useResult = () => {
     const prevList = comparisonList.filter((check) => check.product.lipId !== productToDelete.product.lipId)
     setComparisonList(prevList)
     if (prevList.length === 0) {
-      setModalIsOpen(false)
+      setIsComparisonMode(false)
     }
   }
 
@@ -242,7 +242,7 @@ export const useResult = () => {
     { id: '5', value: 9, label: '9以上' },
   ]
 
-  const modalOptions: SortFilterModalProps = {
+  const drawerOptions: SortFilterProps = {
     brandCheckList: brandNameList.map((brand, index) => {
       return {
         id: brand.value,
@@ -287,7 +287,7 @@ export const useResult = () => {
       value: rangeValue,
       handleChange: handleChange,
     },
-    handleSubmitButton: closeModal,
+    handleSubmitButton: toggleDrawer,
     handleClearButton: handleClearButton,
   }
 
@@ -324,22 +324,22 @@ export const useResult = () => {
   return {
     current,
     page,
-    modalIsOpen,
-    setModalIsOpen,
+    isComparisonMode,
+    setIsComparisonMode,
     sortState,
     slicedProductList,
     createPage,
     redirectToHome,
     handleComparisonButton,
     handleDeleteButtonClick,
-    modalOptions,
+    drawerOptions,
     searchResult,
     tags,
     colorCode,
     selectTag,
     tagList,
     filterIsOpen,
-    setFilterIsOpen,
+    toggleDrawer,
     createPageIndex,
     comparisonList,
   }
